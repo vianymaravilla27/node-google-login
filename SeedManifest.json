@@ -1,0 +1,182 @@
+{
+  "platform": "reactjs",
+  "models": [
+    {
+      "name": "user",
+      "attrs": []
+    },
+    {
+      "name": "business",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "string",
+          "length": "150"
+        },
+        {
+          "name": "address_cords",
+          "type": "string",
+          "length": "512"
+        },
+        {
+          "name": "contact_1",
+          "type": "string",
+          "length": "250"
+        },
+        {
+          "name": "contact_2",
+          "type": "string",
+          "length": "250"
+        },
+        {
+          "name": "contact_3",
+          "type": "string",
+          "length": "250"
+        },
+        {
+          "name": "contact_4",
+          "type": "string",
+          "length": "250"
+        },
+        {
+          "name": "tags",
+          "type": "text"
+        },
+        {
+          "name": "is_local",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "opening_time",
+          "type": "date",
+          "default": "now"
+        },
+        {
+          "name": "closing_time",
+          "type": "date",
+          "default": "now"
+        },
+        {
+          "name": "open_days",
+          "type": "string",
+          "length": "50"
+        },
+        {
+          "name": "verified",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "user",
+          "type": "user",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        },
+        {
+          "name": "category",
+          "type": "category",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        }
+      ]
+    },
+    {
+      "name": "stat",
+      "attrs": [
+        {
+          "name": "prop_1",
+          "type": "int"
+        },
+        {
+          "name": "prop_2",
+          "type": "int"
+        },
+        {
+          "name": "prop_3",
+          "type": "int"
+        },
+        {
+          "name": "prop_4",
+          "type": "int"
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "length": "200"
+        },
+        {
+          "name": "business",
+          "type": "business[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        },
+        {
+          "name": "user",
+          "type": "user",
+          "is_fk": true,
+          "card": {
+            "ref": "1",
+            "has": "0..*"
+          }
+        }
+      ]
+    },
+    {
+      "name": "category",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "enum",
+          "options": [
+            "salud",
+            "entretenimiento",
+            "abarrotes",
+            "cuidado personal",
+            "belleza",
+            "actividad fisica",
+            "construccion y mantenimiento",
+            "transporte",
+            "restaurantes",
+            "comida",
+            "contratistas"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user_type",
+      "attrs": [
+        {
+          "name": "name",
+          "type": "enum",
+          "options": [
+            "OWNER",
+            "CLIENT"
+          ]
+        },
+        {
+          "name": "user",
+          "type": "user[]",
+          "is_fk": true,
+          "card": {
+            "ref": "0..*",
+            "has": "1"
+          },
+          "write": false
+        }
+      ]
+    }
+  ],
+  "export": {}
+}
